@@ -34,14 +34,19 @@ function App() {
   const pickWordAndCategory = useCallback(() => {
     // pick a random category
     const categories = Object.keys(words);
-    const category =
-      categories[Math.floor(Math.random() * Object.keys(categories).length)];
+    const category = categories[Math.floor(Math.random() * categories.length)];
 
     // pick a random word
-    const word =
-      words[category][
-        Math.floor(Math.random() * Object.keys(categories).length)
-      ];
+    const wordList = words[category] || [];
+    const word = wordList[Math.floor(Math.random() * wordList.length)];
+
+    if (!word) {
+      console.error(
+        "pickWordAndCategory: no word found for category",
+        category
+      );
+      return { word: "", category };
+    }
 
     return { word, category };
   }, [words]);
