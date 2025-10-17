@@ -122,9 +122,11 @@ function App() {
     if (letters.length > 0 && guessedLetters.length === uniqueLetters.length) {
       //add score
       setScore((actualScore) => (actualScore += 100));
-
+      setGuesses(3);
       // restart game with new word
-      startGame();
+      setTimeout(function () {
+        startGame();
+      }, 1000);
     }
   }, [guessedLetters, letters, startGame]);
 
