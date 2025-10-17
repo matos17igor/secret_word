@@ -47,3 +47,11 @@
   text-align: center;
   margin-right: 1em;
 }
+
+.wrongLettersContainer {
+  color: black;
+}
+
+p {
+  color: black;
+}
